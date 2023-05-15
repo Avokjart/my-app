@@ -3,11 +3,7 @@ import Movie from './Movie';
 
 export default function MovieList() {
   const [movies, setMovies] = useState([
-    {
-      id: 1,
-      title: "First item",
-      rating: 3
-    }
+    
   ]);
   const inputRef = useRef();
   const ratingRef = useRef();
@@ -54,6 +50,7 @@ export default function MovieList() {
     <div>
       <input className="form-control" placeholder="Add a new movie here..." ref={inputRef} />
       <select ref={ratingRef} >
+        <option disabled selected>Rate the film</option>
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
