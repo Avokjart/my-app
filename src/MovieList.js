@@ -53,7 +53,7 @@ export default function MovieList() {
   return (
     <div>
       <input className="form-control" placeholder="Add a new movie here..." ref={inputRef} />
-      <select ref={ratingRef}>
+      <select ref={ratingRef} >
         <option value="0">0</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -61,14 +61,43 @@ export default function MovieList() {
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <button onClick={addItem}>Add Movie</button>
-      <button onClick={sortAlphabetically}>Sort Alphabetically</button>
-      <button onClick={sortByRating}>Sort by Rating</button>
+      <button onClick={addItem}
+      style={{
+        backgroundColor: 'green',
+        color: '#ffffff',
+        padding: '10px 10px',
+        border: 'none',
+        borderRadius: '4px',
+        cursor: 'pointer',
+        margin: '10px'
+
+      }}
+      >Add Movie</button>
       <ul className="list-group">
         {movies.map(movie => (
           <Movie key={movie.id} item={movie} deleteItem={deleteItem} />
         ))}
       </ul>
+      <button onClick={sortAlphabetically} style={{
+    backgroundColor: 'black',
+    color: '#ffffff',
+    padding: '10px 20px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    margin: '10px'
+
+  }} >Sort Alphabetically</button>
+      <button onClick={sortByRating} style={{
+    backgroundColor: 'black',
+    color: '#ffffff',
+    padding: '10px 10px',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    margin: '10px'
+
+  }}>Sort by Rating</button>
     </div>
   );
 }
