@@ -6,7 +6,7 @@ export default function MovieList() {
     {
       id: 1,
       title: "First item",
-      rating: "3"
+      rating: 3
     }
   ]);
   const inputRef = useRef();
@@ -40,6 +40,16 @@ export default function MovieList() {
     setMovies(prevMovies => prevMovies.filter(item => item.id !== id));
   }
 
+  function sortAlphabetically() {
+    const sortedMovies = [...movies].sort((a, b) => a.title.localeCompare(b.title));
+    setMovies(sortedMovies);
+  }
+
+  function sortByRating() {
+    const sortedMovies = [...movies].sort((a, b) => b.rating - a.rating);
+    setMovies(sortedMovies);
+  }
+
   return (
     <div>
       <input className="form-control" placeholder="Add a new movie here..." ref={inputRef} />
@@ -52,6 +62,8 @@ export default function MovieList() {
         <option value="5">5</option>
       </select>
       <button onClick={addItem}>Add Movie</button>
+      <button onClick={sortAlphabetically}>Sort Alphabetically</button>
+      <button onClick={sortByRating}>Sort by Rating</button>
       <ul className="list-group">
         {movies.map(movie => (
           <Movie key={movie.id} item={movie} deleteItem={deleteItem} />
